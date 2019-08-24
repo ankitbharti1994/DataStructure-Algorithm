@@ -52,4 +52,4 @@ extension Node {
 }
 ```
 
-**NOTE: Time complexity O(n) where n is number of child**
+**NOTE: Time complexity O(n) where n is the level to reach destination**
