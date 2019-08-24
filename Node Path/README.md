@@ -51,3 +51,5 @@ extension Node {
     }
 }
 ```
+
+**NOTE: Time complexity O(n) where n is number of child**
