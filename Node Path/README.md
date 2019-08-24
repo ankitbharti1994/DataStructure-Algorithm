@@ -1,4 +1,4 @@
-##Node Class##
+**Node Class**
 ```swift
 class Node<T: Hashable> {
     let value: T
@@ -12,7 +12,7 @@ class Node<T: Hashable> {
 }
 ```
 
-##Node Creation##
+**Node Creation**
 ```swift
 let node1 = Node(value: 1)
 let node2 = Node(value: 2)
@@ -28,7 +28,7 @@ node4.child = node5
 node5.child = node6
 ```
 
-##Path Finding##
+**Path Finding**
 ```swift
 extension Node {
     func path(to destination: Node) -> String {
