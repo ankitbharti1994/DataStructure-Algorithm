@@ -8,6 +8,7 @@ public protocol LinkedList {
     init()
     init(value: Element)
     func isAvailable(_ value: Element) -> Bool
+    func node(at index: Int) -> Node<Element>?
     mutating func append(_ value: Element)
     mutating func insert(_ value: Element, at index: Int)
     mutating func insertLeft(_ value: Element)

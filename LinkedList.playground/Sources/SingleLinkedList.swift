@@ -1,8 +1,9 @@
 import Foundation
 
-public struct SingleLinkedList<T: Equatable>: LinkedList {
+public struct SingleLinkedList<T: Equatable>: LinkedList, IteratorProtocol {
     public typealias Element = T
     public var head: Node<T>? = nil
+    private var counter = 0
     
     public init() {}
     
@@ -33,12 +34,8 @@ public struct SingleLinkedList<T: Equatable>: LinkedList {
     public func isAvailable(_ value: T) -> Bool {
         var isValueExist = false
         var localHead = head
-        
-        guard let _localHead = localHead else {
-            return isValueExist
-        }
 
-        if _localHead.value == value {
+        if localHead?.value == value {
             isValueExist.toggle()
             return isValueExist
         } else {
@@ -112,5 +109,37 @@ public struct SingleLinkedList<T: Equatable>: LinkedList {
     
     public mutating func insertRight(_ value: T) {
         self.append(value)
+    }
+    
+    public func node(at index: Int) -> Node<T>? {
+        guard index < count else { return nil }
+        
+        if index == 0 {
+            return head
+        } else {
+            var localHead = head
+            var nums = 1
+
+            while localHead?.next != nil {
+                if nums == index {
+                    return localHead?.next
+                } else {
+                    localHead = localHead?.next
+                    nums += 1
+                }
+            }
+            
+            return nil
+        }
+    }
+    
+    public mutating func next() -> T? {
+        guard counter < count else {
+            return nil
+        }
+        
+        let node = self.node(at: counter)
+        counter += 1
+        return node?.value
     }
 }

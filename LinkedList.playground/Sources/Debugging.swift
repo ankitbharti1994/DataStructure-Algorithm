@@ -18,3 +18,10 @@ extension SingleLinkedList: CustomStringConvertible {
         return message
     }
 }
+
+
+extension Node: CustomStringConvertible {
+    public var description: String {
+        return "Value: \(value), Next: \(String(describing: self.next))"
+    }
+}
