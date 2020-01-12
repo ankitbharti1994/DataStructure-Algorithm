@@ -1,5 +1,6 @@
 import Foundation
 
+/// protocol which manages the linked list
 public protocol LinkedList {
     associatedtype Element where Element : Equatable
     var head: Node<Element>? { get set }
