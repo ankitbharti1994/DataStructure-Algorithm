@@ -20,3 +20,6 @@ sll1.isAvailable("ankit")
 while let value = sll.next() {
     print(value)
 }
+
+// Testing
+LinkedListTest.defaultTestSuite.run()
