@@ -23,3 +23,11 @@ while let value = sll.next() {
 
 // Testing
 LinkedListTest.defaultTestSuite.run()
+
+class F1 {
+    func xyz() {}
+}
+
+
+"Ankit" == "Ankit"
+"Ankit".caseInsensitiveCompare("ANKIT") == .orderedSame
