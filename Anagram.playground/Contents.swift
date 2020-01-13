@@ -61,15 +61,11 @@ extension String {
         var counter = 0
         
         while counter < self.count {
-            for anagram_string in anagrams_buffer {
-                for anagram_index in counter..<anagram_string.count {
-                    let new_anagram_string = anagram_string.swap(sourceIndex: counter, destinationIndex: anagram_index)
-                    if anagrams_buffer.contains(new_anagram_string) {
-                        continue
-                    } else {
-                       anagrams_buffer.append(new_anagram_string)
-                    }
-                }
+            let currentData = anagrams_buffer
+            anagrams_buffer.removeAll()
+            for var str in currentData {
+                let arr = str.anagrams(from: counter)
+                anagrams_buffer.append(contentsOf: arr)
             }
             
             counter++
@@ -78,7 +74,7 @@ extension String {
         return anagrams_buffer
     }
     
-    mutating func anagrams(from index: Int) -> [String] {
+    mutating private func anagrams(from index: Int) -> [String] {
         var anagrams_buffer = [String]()
         for count in index..<self.count {
             let new_anagram_string = self.swap(sourceIndex: index, destinationIndex: count)
@@ -93,40 +89,7 @@ extension String {
     }
 }
 
-var input = "ABCD"
+var input = "ABCDF"
 
-extension String {
-    mutating func anagrams() -> [String] {
-        var data = [[String]]()
-        
-        data.append(self.anagrams(from: 0))
-        
-        var counter = 0
-        
-        while counter < count {
-            let newData = data[counter]
-            for var name in newData {
-                let something = name.anagrams(from: counter)
-                print("---------------------")
-                print("something \(counter)", something)
-                data.append(something)
-            }
-            
-            counter++
-        }
-                    
-        var finalData = [String]()
-        
-        _ = data.flatMap { $0 }.map {
-            if finalData.contains($0) {
-            
-            } else {
-                finalData.append($0)
-            }
-        }
-        
-        return finalData
-    }
-}
-
-print(input.anagrams())
+let arr = input.generateAnagrams()
+print(arr, arr.count, Set(arr).count)
