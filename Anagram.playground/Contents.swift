@@ -8,7 +8,7 @@ postfix func ++(value: inout Int) {
 
 extension String {
     /// subscript to get the string from a particular index
-    subscript(_ index: Int) -> String {
+    private subscript(_ index: Int) -> String {
         get {
             String(Array(self)[index..<index + 1])
         }
@@ -24,7 +24,7 @@ extension String {
     /// - Parameters:
     ///   - sourceIndex: source index of a index
     ///   - destinationIndex: destination index of string
-    func swap(sourceIndex: Int, destinationIndex: Int) -> String {
+    private func swap(sourceIndex: Int, destinationIndex: Int) -> String {
         let first = self[sourceIndex]
         let second = self[destinationIndex]
         
@@ -34,6 +34,22 @@ extension String {
         copyStr[destinationIndex] = first
         
         return copyStr
+    }
+    
+    /// perform the swapping of two characters from a spific index to the further down
+    /// - Parameter index: start index for swapping
+    mutating private func anagrams(from index: Int) -> [String] {
+        var anagrams_buffer = [String]()
+        for count in index..<self.count {
+            let new_anagram_string = self.swap(sourceIndex: index, destinationIndex: count)
+            if anagrams_buffer.contains(new_anagram_string) {
+                continue
+            } else {
+                anagrams_buffer.append(new_anagram_string)
+            }
+        }
+        
+        return anagrams_buffer
     }
     
     /// generate list of anagrams from string
@@ -68,22 +84,6 @@ extension String {
             }
             
             counter++
-        }
-        
-        return anagrams_buffer
-    }
-    
-    /// perform the swapping of two characters from a spific index to the further down
-    /// - Parameter index: start index for swapping
-    mutating private func anagrams(from index: Int) -> [String] {
-        var anagrams_buffer = [String]()
-        for count in index..<self.count {
-            let new_anagram_string = self.swap(sourceIndex: index, destinationIndex: count)
-            if anagrams_buffer.contains(new_anagram_string) {
-                continue
-            } else {
-                anagrams_buffer.append(new_anagram_string)
-            }
         }
         
         return anagrams_buffer
