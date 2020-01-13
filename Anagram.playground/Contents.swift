@@ -74,6 +74,8 @@ extension String {
         return anagrams_buffer
     }
     
+    /// perform the swapping of two characters from a spific index to the further down
+    /// - Parameter index: start index for swapping
     mutating private func anagrams(from index: Int) -> [String] {
         var anagrams_buffer = [String]()
         for count in index..<self.count {
@@ -89,6 +91,7 @@ extension String {
     }
 }
 
+// Uses
 var input = "ABCDF"
 
 let arr = input.generateAnagrams()
