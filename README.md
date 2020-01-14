@@ -1,2 +1,2 @@
 # InterviewQuestions
-Contains interview question
+Contains Data structure and algorithm related programs
